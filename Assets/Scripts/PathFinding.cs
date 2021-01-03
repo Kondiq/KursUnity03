@@ -13,10 +13,10 @@ public class PathFinding
     private List<PathNode> openList; //list of nodes to check
     private List<PathNode> closedList; //already searched nodes
 
-    public PathFinding(int width, int height)
+    public PathFinding(int width, int height, float cellSize, Vector3 originPosition)
     {
         Instance = this;
-        grid = new GridPF(width, height, 10f, Vector3.zero);
+        grid = new GridPF(width, height, cellSize, originPosition);
     }
 
     public GridPF GetGrid()
@@ -47,6 +47,7 @@ public class PathFinding
 
     private List<PathNode> FindPath(int startX, int startY, int endX, int endY)
     {
+        Debug.Log("startX: " + startX+ "startY: " + startY+ "endX: " + endX+ "endY: " + endY);
         PathNode startNode = grid.GetGridObject(startX, startY);
         PathNode endNode = grid.GetGridObject(endX, endY);
 
